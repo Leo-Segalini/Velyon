@@ -1,0 +1,25 @@
+---
+description: Tests unitaires, a11y, PDF — contrastes, logos, police custom
+globs: "**/*.{spec,test}.{ts,tsx}"
+alwaysApply: false
+---
+
+# Tests & qualité
+
+## Obligatoires (CDC)
+
+1. **Calcul des contrastes** WCAG (AA/AAA, suggestions).
+2. **Génération des variantes de logo** (mono, négatif, fonds).
+3. **Rendu PDF avec police personnalisée** (embed + spécimen).
+
+## Compléments
+
+- Unitaires : nuances 100–900, sanitization SVG (cas XSS), rôles couleur/typo.
+- Intégration : file PDF (mock worker), entitlements freemium/filigrane.
+- E2E : parcours assistant 6 étapes → aperçu → export (Playwright).
+- A11y : axe + clavier sur wizard et dashboard.
+
+## CI
+
+- `npm test` / typecheck / lint verts avant merge.
+- Tests PDF peuvent être tagués `slow` mais doivent exister et passer en CI nightly ou pre-release.

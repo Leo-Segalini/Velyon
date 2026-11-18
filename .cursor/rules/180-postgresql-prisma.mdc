@@ -1,0 +1,30 @@
+---
+description: PostgreSQL + Prisma — schéma Brand, assets, Guideline, Subscription
+globs: "**/*.{prisma,sql}"
+alwaysApply: true
+---
+
+# PostgreSQL + Prisma
+
+## BDD de référence
+
+PostgreSQL via Prisma. Migrations versionnées ; pas de drift non documenté.
+
+## Modèle (CDC)
+
+- `User` — auth
+- `Brand` — nom, baseline, secteur, valeurs, langue
+- `LogoAsset` — variante, URL, dimensions, origine (importé | généré)
+- `ColorToken` — nom, rôle, HEX, ordre
+- `FontAsset` — famille, rôle, graisses, URL woff2, droits confirmés
+- `TypeScale` — échelle typographique
+- `Guideline` — modèle, format, sections, textes, version, pdfUrl
+- `Subscription` — offre Stripe / entitlements
+
+## Règles
+
+- `uuid` PK ; `timestamptz` ; enums pour statuts (brouillon, généré…).
+- Fichiers en object storage — **métadonnées seulement** en BDD.
+- Index sur `userId`, `brandId`, statuts.
+- Soft-delete / rétention alignés RGPD (suppression sur demande).
+- Rôle app least-privilege ; credentials via env.

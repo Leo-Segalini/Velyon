@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a></header>
+    <main id="contenu">
+      <h1>Architecture</h1>
+      <p>Next.js 14 (App Router), TypeScript, Tailwind. Le parcours produit est une discussion : <code>src/components/chat/studio.tsx</code> affiche le fil, <code>POST /api/chat</code> répond. <code>src/lib/knowledge</code> choisit les forfaits en interne. <code>src/lib/ai</code> rédige via Gemini, Mistral ou Claude.</p>
+      <h2>Dossiers</h2>
+      <ul>
+        <li><code>src/app/(site)</code> — discussion.</li>
+        <li><code>src/app/api/chat</code> — réponse et documents.</li>
+        <li><code>src/lib/knowledge</code> — grille issue des pièces <code>demo/</code>.</li>
+        <li><code>src/lib/ai</code> — fournisseurs de rédaction, repli local.</li>
+        <li><code>src/app/charte</code> — ancien rendu de charte, non relié au parcours.</li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>

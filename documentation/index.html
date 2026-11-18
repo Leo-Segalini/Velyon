@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation — Velyon</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top">
+      <strong>Velyon — documentation</strong>
+      <nav aria-label="Documentation">
+        <a href="changelog.html">Journal</a>
+        <a href="architecture/overview.html">Architecture</a>
+        <a href="architecture/pdf-pipeline.html">PDF</a>
+        <a href="api/routes.html">API</a>
+        <a href="database/schema.html">Schéma</a>
+        <a href="features/dossier.html">Dossier</a>
+        <a href="features/design-system.html">Design system</a>
+        <a href="accessibility/contrastes.html">Contrastes</a>
+        <a href="security/index.html">Sécurité</a>
+      </nav>
+    </header>
+    <main id="contenu">
+      <h1>Suivi du produit</h1>
+      <p class="meta">Version 0.2.0 · 18 novembre 2026 · Dossiers d’avant-vente</p>
+      <p>Velyon est une discussion. On décrit un projet, le modèle répond, puis il rédige le cahier des charges et les deux propositions. Les prix viennent des dossiers de référence, sans page de grille.</p>
+      <h2>Livré</h2>
+      <ul>
+        <li>Page de discussion, sans grille tarifaire.</li>
+        <li>Forfaits internes : visio (7 000, 19 500, 25 000 € HT), mobile (21 495 € HT), taux journalier 450 € HT.</li>
+        <li>Rédaction Gemini, Mistral ou Claude. Sans clé, la conversation reste possible.</li>
+        <li>Route <code>POST /api/chat</code>, limitée à 20 messages par minute.</li>
+      </ul>
+      <h2>Référence</h2>
+      <p>Le détail est dans <a href="features/dossier.html">Dossier d’avant-vente</a>.</p>
+    </main>
+  </div>
+</body>
+</html>

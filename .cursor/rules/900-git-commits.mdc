@@ -1,0 +1,12 @@
+---
+description: Protocole git et commits — sur demande explicite uniquement
+alwaysApply: false
+---
+
+# Git & Commits
+
+- Commit **uniquement** sur demande explicite.
+- Jamais de `git config`, pas de force push sur main, pas de `--no-verify` sauf demande.
+- Messages : `feat:`, `fix:`, `refactor:`, `docs:`, `test:` — focus **pourquoi**.
+- Ne jamais committer `.env`, credentials, polices/logos clients de démo sensibles non autorisés.
+- Avant commit : `git status`, `git diff`, `git log` ; HEREDOC pour le message.

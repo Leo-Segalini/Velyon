@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dossier d’avant-vente — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top">
+      <a href="../index.html">Documentation</a>
+      <nav aria-label="Documentation"><a href="../changelog.html">Journal</a><a href="../api/routes.html">API</a></nav>
+    </header>
+    <main id="contenu">
+      <h1>Dossier d’avant-vente</h1>
+      <p class="meta">18 novembre 2026 · v0.2.0 · Stable</p>
+      <h2>Description</h2>
+      <p>L’accueil est une discussion. On décrit le projet, Velyon répond dans le fil, puis rédige le cahier des charges, la proposition technique et la proposition financière quand on le demande. Les prix viennent des dossiers de <code>demo/</code> et ne sont pas présentés comme une grille.</p>
+      <h2>Cas d’usage</h2>
+      <ul>
+        <li>Un prospect décrit une plateforme de visio et de traduction : la formule Mobilité (19 500 € HT) est retenue si l’ampleur est standard.</li>
+        <li>Un prospect décrit une application mobile : le socle Flutter / Strapi (21 495 € HT) est retenu.</li>
+        <li>Un site vitrine n’a pas de forfait de référence : les lignes sont au taux de 450 € HT et le document le signale.</li>
+      </ul>
+      <h2>Fichiers</h2>
+      <table>
+        <thead><tr><th>Fichier</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td><code>src/lib/knowledge/catalog.ts</code></td><td>Forfaits, piles, conditions. <span class="badge">Créé</span></td></tr>
+          <tr><td><code>src/lib/knowledge/estimate.ts</code></td><td>Choix des briques selon le texte. <span class="badge">Créé</span></td></tr>
+          <tr><td><code>src/lib/ai/narrative.ts</code></td><td>Appel Gemini, Mistral ou Claude. Repli sur la grille. <span class="badge">Créé</span></td></tr>
+          <tr><td><code>src/components/chat/studio.tsx</code></td><td>Page de discussion. <span class="badge">Créé</span></td></tr>
+          <tr><td><code>src/app/api/chat/route.ts</code></td><td>Réponse du fil, 20 messages par minute. <span class="badge">Créé</span></td></tr>
+        </tbody>
+      </table>
+      <h2>Sécurité</h2>
+      <ul>
+        <li>Les clés API ne sont lues que sur le serveur. Aucun préfixe <code>NEXT_PUBLIC_</code>.</li>
+        <li>Le texte du prospect est validé (40 à 8 000 caractères) et n’est pas écrit dans les journaux.</li>
+        <li>Le modèle reçoit la formule déjà chiffrée. La réponse JSON est rejetée si elle ne respecte pas le schéma. Les montants affichés viennent du serveur.</li>
+        <li>Limite de 8 dossiers par minute et par adresse.</li>
+      </ul>
+      <h2>Journal</h2>
+      <p>18 novembre 2026 — le produit passe de la charte graphique aux trois documents d’avant-vente.</p>
+    </main>
+  </div>
+</body>
+</html>

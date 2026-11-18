@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --velyon-palm-leaf: #92977e;
+  --velyon-light-gold: #e6e18f;
+  --velyon-vanilla-custard: #fefcad;
+  --velyon-vanilla-border: #eadda6;
+  --velyon-cornsilk-bg: #fffae2;
+  --velyon-surface-white: #ffffff;
+  --velyon-card: #fffdf5;
+  --velyon-text-primary: #26291e;
+  --velyon-text-secondary: #5c614d;
+  --velyon-gradient-brand: linear-gradient(135deg, #92977e 0%, #e6e18f 50%, #eadda6 100%);
+  --velyon-gradient-soft: linear-gradient(180deg, #fffae2 0%, #fefcad 100%);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-card: 0 4px 20px rgba(38, 41, 30, 0.05);
+  --z-header: 20;
+  --z-skip: 40;
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--velyon-cornsilk-bg);
+  color: var(--velyon-text-primary);
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--velyon-text-primary);
+  outline-offset: 3px;
+}
+
+.footer-dark :focus-visible { outline-color: var(--velyon-cornsilk-bg); }
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: var(--z-skip);
+  background: var(--velyon-text-primary);
+  color: var(--velyon-cornsilk-bg);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus { top: 16px; }
+
+summary { list-style: none; }
+summary::-webkit-details-marker { display: none; }
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn:disabled { cursor: not-allowed; opacity: 0.55; }
+  .btn-primary { background: var(--velyon-text-primary); color: var(--velyon-cornsilk-bg); }
+  .btn-primary:hover { background: var(--velyon-palm-leaf); color: var(--velyon-text-primary); }
+  .btn-ai { background: var(--velyon-light-gold); color: var(--velyon-text-primary); border-color: var(--velyon-palm-leaf); }
+  .btn-ai:hover { background: #d9d48a; }
+  .btn-outline { background: transparent; color: var(--velyon-text-primary); border-color: var(--velyon-vanilla-border); }
+  .btn-outline:hover { background: var(--velyon-vanilla-custard); }
+  .card {
+    background: var(--velyon-surface-white);
+    border: 1px solid var(--velyon-vanilla-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+  .card-selected {
+    background: var(--velyon-card);
+    border: 2px solid var(--velyon-palm-leaf);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .badge-gold { background: var(--velyon-light-gold); color: var(--velyon-text-primary); }
+  .badge-custard { background: var(--velyon-vanilla-custard); color: var(--velyon-text-primary); }
+  .badge-ink { background: var(--velyon-text-primary); color: var(--velyon-cornsilk-bg); }
+  .bubble {
+    background: var(--velyon-vanilla-custard);
+    border-left: 4px solid var(--velyon-palm-leaf);
+    border-radius: 2px 12px 12px 12px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--velyon-text-primary);
+    background: #fff;
+    border: 1px solid var(--velyon-vanilla-border);
+    border-radius: 8px;
+    padding: 12px;
+    min-height: 44px;
+  }
+  .field textarea { min-height: 180px; resize: vertical; }
+}
+
+@media print {
+  header, footer, .no-print { display: none !important; }
+  body { background: #fff; }
+  .dossier-sheet { box-shadow: none; border: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+  }
+}

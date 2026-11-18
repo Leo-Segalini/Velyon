@@ -1,0 +1,39 @@
+---
+description: Domaine Velyon — brand book SaaS, assistant 6 étapes, modèle Prisma, offre Stripe
+alwaysApply: true
+---
+
+# Domaine Velyon
+
+Référence : `cahierdescharges.md`.
+
+## Mission
+
+Générer automatiquement une **charte graphique PDF professionnelle** + pack tokens (`tokens.css`, `tailwind.config.js`, `brand.json`, ZIP logos/polices) à partir du logo, des polices et des couleurs du client.
+
+## Assistant (6 étapes, sauvegarde auto)
+
+| Étape | Contenu |
+|------|---------|
+| 1 Marque | Nom, baseline, secteur, description, 3–5 valeurs, langue (fr/en) |
+| 2 Logo | Import multi-variantes, contrôles qualité, génération variantes manquantes, palette suggérée |
+| 3 Couleurs | Rôles (primaire…avertissement), HEX/RGB/HSL/CMJN, nuances 100–900, contrastes AA/AAA, 2 dégradés |
+| 4 Polices | TTF/OTF/WOFF/WOFF2 ou Google Fonts, rôles, échelle typo, WOFF2 + embed PDF, licence |
+| 5 Contenu | Sections PDF, format A4 paysage/portrait, modèles Classique/Éditorial/Minimal, textes + IA |
+| 6 Export | Aperçu = moteur PDF, PDF + pack tokens, partage, versions, duplication |
+
+## Entités Prisma (rappel)
+
+`User` · `Brand` · `LogoAsset` · `ColorToken` · `FontAsset` · `TypeScale` · `Guideline` · `Subscription`
+
+## Back-office & business
+
+- Auth : magic link e-mail ou Google.
+- Dashboard chartes : brouillon / généré, dupliquer, supprimer, télécharger.
+- Free : 1 charte, filigrane PDF. Payant : illimité, sans filigrane, tokens, partage — **Stripe**.
+- Admin : modèles, textes types, users, stats génération.
+
+## Principes UI produit
+
+- Plateforme **sobre, neutre, thème clair**.
+- Fallbacks cohérents si couleur/police manquante + signalement utilisateur.

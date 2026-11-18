@@ -1,0 +1,22 @@
+---
+description: Charge et performance — imports, génération PDF, file d’attente
+globs: "**/*{k6,artillery,perf,load,queue,bull}*"
+alwaysApply: false
+---
+
+# Charge & performance
+
+## Chemins critiques
+
+- Upload logo / polices concurrent
+- Génération PDF (Playwright) sous file BullMQ
+- Dashboard liste chartes
+- Export pack tokens + ZIP
+
+## Exigences
+
+- Rate limit imports et générations.
+- Timeouts worker PDF ; pas de blocage event-loop Next.
+- Mesurer p95 génération ; saturation Chromium / mémoire.
+- Jamais de load test non autorisé sur prod partagée.
+- Budgets front : LCP/INP sur wizard ; aperçu non bloquant.

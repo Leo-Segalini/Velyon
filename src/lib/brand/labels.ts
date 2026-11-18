@@ -1,0 +1,73 @@
+import type { BrandLanguage } from '@/lib/brand/types'
+
+const fr = {
+  coverKicker: 'Brand book officiel',
+  coverSubtitle: 'Charte graphique & design system',
+  version: 'Version',
+  date: 'Date',
+  sector: 'Secteur',
+  page: 'Page',
+  forbidden: 'Interdit',
+  hex: 'HEX',
+  rgb: 'RVB',
+  cmyk: 'CMJN indicatif',
+  hsl: 'TSL',
+  role: 'Rôle',
+  usage: 'Usage',
+  ratio: 'Ratio',
+  level: 'Niveau',
+  recommendation: 'Recommandation',
+  compliant: 'Conforme',
+  fix: 'À corriger',
+  watermark: 'Document généré avec l’offre gratuite Velyon',
+  missingSections: 'Aucune section n’est activée pour ce document.',
+  primaryAction: 'Action principale',
+  secondaryAction: 'Action secondaire',
+  fieldLabel: 'Nom de la marque',
+  selected: 'Sélectionné',
+  specimen: 'Spécimen',
+  withBaseline: 'Avec baseline',
+  withoutBaseline: 'Sans baseline',
+  minSize: 'Taille minimale',
+  clearSpace: 'Zone de protection',
+  indicative: 'Valeur indicative, hors profil colorimétrique.',
+}
+
+const en = {
+  coverKicker: 'Official brand book',
+  coverSubtitle: 'Graphic charter & design system',
+  version: 'Version',
+  date: 'Date',
+  sector: 'Sector',
+  page: 'Page',
+  forbidden: 'Do not',
+  hex: 'HEX',
+  rgb: 'RGB',
+  cmyk: 'Indicative CMYK',
+  hsl: 'HSL',
+  role: 'Role',
+  usage: 'Usage',
+  ratio: 'Ratio',
+  level: 'Level',
+  recommendation: 'Recommendation',
+  compliant: 'Pass',
+  fix: 'Fix',
+  watermark: 'Generated with the Velyon free plan',
+  missingSections: 'No section is enabled for this document.',
+  primaryAction: 'Primary action',
+  secondaryAction: 'Secondary action',
+  fieldLabel: 'Brand name',
+  selected: 'Selected',
+  specimen: 'Specimen',
+  withBaseline: 'With tagline',
+  withoutBaseline: 'Without tagline',
+  minSize: 'Minimum size',
+  clearSpace: 'Clear space',
+  indicative: 'Indicative value, not a colour-managed profile.',
+}
+
+export type BookLabels = typeof fr
+
+export function getLabels(language: BrandLanguage): BookLabels {
+  return language === 'en' ? en : fr
+}

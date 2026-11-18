@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pipeline PDF — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a></header>
+    <main id="contenu">
+      <h1>Pipeline PDF</h1>
+      <p>L’aperçu <code>/charte/apercu</code> et l’export <code>GET /api/charte/pdf</code> affichent le même composant <code>BrandBook</code>. La route lance Chromium, ouvre cette page en média print et laisse la règle <code>@page</code> fixer le format.</p>
+      <ol>
+        <li>La marque est résolue : HEX valides, rôles manquants remplacés, avertissements listés.</li>
+        <li>Les variables CSS sont posées sur la racine du document.</li>
+        <li>Les sections actives deviennent des planches de format fixe.</li>
+        <li>Playwright attend les polices et les images, puis imprime.</li>
+      </ol>
+      <p>Le filigrane n’est pas un paramètre d’URL. Il est une donnée serveur (<code>watermark</code>). La démo le laisse désactivé. L’offre gratuite l’activera avec l’abonnement, pas depuis le navigateur.</p>
+      <p>La route est limitée à 5 générations par minute et par adresse. Chromium doit être installé (<code>npx playwright install chromium</code>).</p>
+    </main>
+  </div>
+</body>
+</html>

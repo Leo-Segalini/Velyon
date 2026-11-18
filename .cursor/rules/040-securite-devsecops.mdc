@@ -1,0 +1,30 @@
+---
+description: Sécurité DevSecOps — secrets, authZ, validation, uploads
+alwaysApply: true
+---
+
+# Sécurité DevSecOps
+
+## Secrets
+
+- Jamais de clé API, mot de passe ou token en dur.
+- `.env` + `.env.example` ; `.env` dans `.gitignore`.
+- Clé Anthropic et secrets Stripe **côté serveur uniquement**.
+
+## Auth & authZ
+
+- Décision d’autorisation côté serveur uniquement.
+- Sessions / magic link / OAuth Google ; expiration claire.
+- Isolation stricte des assets (logos, polices) par utilisateur — jamais accessibles croisés.
+
+## Entrées & sorties
+
+- Validation serveur (body, query, upload) : MIME réel, taille, extension.
+- SQL paramétré / Prisma — jamais de concaténation.
+- Sanitize affichage ; CSP en production.
+
+## Réseau
+
+- HTTPS en prod ; CORS restrictif.
+- Rate limiting sur imports, générations PDF, auth.
+- Tokens via cookies httpOnly / headers — jamais en query string pour secrets.

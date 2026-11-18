@@ -1,0 +1,31 @@
+---
+description: Génération PDF charte via Playwright HTML/CSS — templates, sections, tokens
+globs: "**/*{pdf,playwright,template,brand-book,guideline,export}*"
+alwaysApply: false
+---
+
+# PDF Brand Book (Playwright)
+
+## Principe
+
+- PDF généré par **Playwright Chromium headless** depuis templates **HTML/CSS**.
+- Aperçu UI = **même moteur** que l’export (fidélité).
+- **Aucune** couleur/police de marque hardcodée — injection via **variables CSS**.
+
+## Sections (templates)
+
+Couverture · Sommaire · Identité · Logotype · Zone de protection / tailles min · Usages interdits (8 cas avec le vrai logo) · Palette · Équilibre / dégradés · Accessibilité · Combinaisons texte/fond · Typographie · Échelle · Grille / espacements · Iconographie (Lucide aux couleurs marque) · Composants UI · Documents types (opt.) · Design tokens · Check-list conformité.
+
+## Formats & modèles
+
+- A4 paysage (reco) ou portrait.
+- Layouts : Classique · Éditorial · Minimal.
+
+## Export pack
+
+- PDF + `tokens.css` + `tailwind.config.js` + `brand.json` + ZIP logos/polices.
+- File d’attente (BullMQ) pour rendus lourds ; timeouts ; filigrane freemium serveur.
+
+## Fallback
+
+- Couleur/police manquante → valeurs de repli cohérentes + signalement UI.

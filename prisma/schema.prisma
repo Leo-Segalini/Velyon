@@ -1,0 +1,197 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BrandLanguage {
+  fr
+  en
+}
+
+enum GuidelineStatus {
+  DRAFT
+  GENERATED
+}
+
+enum GuidelineFormat {
+  A4_LANDSCAPE
+  A4_PORTRAIT
+}
+
+enum GuidelineTemplate {
+  CLASSIQUE
+  EDITORIAL
+  MINIMAL
+}
+
+enum LogoVariant {
+  PRIMARY
+  HORIZONTAL
+  VERTICAL
+  MONOGRAM
+  NEGATIVE
+  MONOCHROME_BLACK
+  MONOCHROME_WHITE
+}
+
+enum LogoOrigin {
+  IMPORTED
+  GENERATED
+}
+
+enum ColorRole {
+  PRIMARY
+  SECONDARY
+  ACCENT
+  BACKGROUND
+  SURFACE
+  TEXT
+  TEXT_SECONDARY
+  BORDER
+  SUCCESS
+  ERROR
+  WARNING
+  CUSTOM
+}
+
+enum FontRole {
+  HEADING
+  BODY
+  MONO
+  FALLBACK
+}
+
+enum Plan {
+  FREE
+  PAID
+}
+
+model User {
+  id           String        @id @default(uuid()) @db.Uuid
+  email        String        @unique
+  name         String?
+  createdAt    DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime      @updatedAt @db.Timestamptz(6)
+  deletedAt    DateTime?     @db.Timestamptz(6)
+  brands       Brand[]
+  subscription Subscription?
+
+  @@index([deletedAt])
+}
+
+model Brand {
+  id          String        @id @default(uuid()) @db.Uuid
+  userId      String        @db.Uuid
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  baseline    String?
+  sector      String?
+  description String?
+  values      String[]
+  language    BrandLanguage @default(fr)
+  createdAt   DateTime      @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime      @updatedAt @db.Timestamptz(6)
+  deletedAt   DateTime?     @db.Timestamptz(6)
+  logos       LogoAsset[]
+  colors      ColorToken[]
+  fonts       FontAsset[]
+  typeScales  TypeScale[]
+  guidelines  Guideline[]
+
+  @@index([userId])
+  @@index([deletedAt])
+}
+
+model LogoAsset {
+  id        String       @id @default(uuid()) @db.Uuid
+  brandId   String       @db.Uuid
+  brand     Brand        @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  variant   LogoVariant
+  origin    LogoOrigin
+  url       String
+  widthPx   Int?
+  heightPx  Int?
+  mimeType  String
+  createdAt DateTime     @default(now()) @db.Timestamptz(6)
+
+  @@index([brandId])
+  @@index([brandId, variant])
+}
+
+model ColorToken {
+  id        String    @id @default(uuid()) @db.Uuid
+  brandId   String    @db.Uuid
+  brand     Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  name      String
+  role      ColorRole
+  hex       String
+  sortOrder Int
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+
+  @@index([brandId])
+  @@index([brandId, role])
+}
+
+model FontAsset {
+  id                String   @id @default(uuid()) @db.Uuid
+  brandId           String   @db.Uuid
+  brand             Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  family            String
+  role              FontRole
+  weights           Int[]
+  woff2Url          String?
+  rightsConfirmed   Boolean  @default(false)
+  createdAt         DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([brandId])
+}
+
+model TypeScale {
+  id        String   @id @default(uuid()) @db.Uuid
+  brandId   String   @db.Uuid
+  brand     Brand    @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  name      String
+  steps     Json
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([brandId])
+}
+
+model Guideline {
+  id         String             @id @default(uuid()) @db.Uuid
+  brandId    String             @db.Uuid
+  brand      Brand              @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  status     GuidelineStatus    @default(DRAFT)
+  template   GuidelineTemplate  @default(CLASSIQUE)
+  format     GuidelineFormat    @default(A4_LANDSCAPE)
+  sections   Json
+  copy       Json
+  version    Int                @default(1)
+  pdfUrl     String?
+  createdAt  DateTime           @default(now()) @db.Timestamptz(6)
+  updatedAt  DateTime           @updatedAt @db.Timestamptz(6)
+  deletedAt  DateTime?          @db.Timestamptz(6)
+
+  @@index([brandId])
+  @@index([status])
+  @@index([deletedAt])
+}
+
+model Subscription {
+  id                   String   @id @default(uuid()) @db.Uuid
+  userId               String   @unique @db.Uuid
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan                 Plan     @default(FREE)
+  status               String   @default("inactive")
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  createdAt            DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt            DateTime @updatedAt @db.Timestamptz(6)
+
+  @@index([plan])
+  @@index([stripeCustomerId])
+}

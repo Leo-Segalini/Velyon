@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sécurité — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a></header>
+    <main id="contenu">
+      <h1>Sécurité de cette livraison</h1>
+      <ul>
+        <li>Aucun secret dans le code. <code>.env</code> est ignoré, <code>.env.example</code> ne contient que des emplacements.</li>
+        <li>En-têtes HTTP (nosniff, frame, referrer, permissions). La CSP est active en production.</li>
+        <li>La route PDF ne navigue pas vers une adresse fournie par le client. Seuls le modèle et le format, bornés par une liste, sont acceptés.</li>
+        <li>Cinq exports PDF par minute et par adresse. Réponse 429 avec <code>Retry-After</code>.</li>
+        <li>Les noms de police injectés dans le CSS perdent tout caractère hors lettres, chiffres, espace et tiret.</li>
+        <li>Le filigrane est décidé dans les données serveur, pas par un paramètre d’URL.</li>
+      </ul>
+      <h2>Pas encore en place</h2>
+      <ul>
+        <li>Authentification, isolation des fichiers par utilisateur, assainissement SVG : ils arrivent avec l’import.</li>
+        <li>Stripe et le filigrane lié à l’offre réelle.</li>
+        <li>File d’attente pour les rendus. Aujourd’hui un Chromium est lancé par requête, ce qui est acceptable pour la démo et trop lourd pour la charge.</li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+---
+description: Import logo, variantes, analyse couleurs, sanitization SVG
+globs: "**/*{logo,asset,upload,svg,vibrant,colorthief,sharp,svgo}*"
+alwaysApply: false
+---
+
+# Logos & assets
+
+## Formats
+
+- Acceptés : SVG (recommandé), PNG, JPG, WebP — **10 Mo max**.
+- Variantes : principal, horizontal, vertical, monogramme, négatif, monochrome.
+
+## Contrôles
+
+- Résolution minimale, transparence, dimensions, ratio — alertes FR claires si qualité insuffisante.
+
+## Génération automatique des manquantes
+
+- Monochrome noir / blanc, sans baseline, fond sombre / clair.
+- SVG : recoloration des tracés (après sanitize).
+- Raster : masque alpha/luminance (suppression fond blanc si besoin).
+- Recadrage monogramme possible.
+
+## Analyse
+
+- Palette suggérée via couleurs dominantes (node-vibrant / colorthief).
+- Métadonnées en BDD (`LogoAsset`) ; fichiers en storage S3/Supabase — pas de blob Postgres.
+
+## Sécurité
+
+- Sanitize SVG (svgo + DOMPurify) avant tout traitement.
+- Voir rule `041-securite-velyon`.

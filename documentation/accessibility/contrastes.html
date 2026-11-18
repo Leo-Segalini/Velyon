@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contrastes — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a></header>
+    <main id="contenu">
+      <h1>Contrastes</h1>
+      <p>Le calcul suit la luminance relative WCAG 2.x. Les tests vivent dans <code>src/lib/color/contrast.test.ts</code>.</p>
+      <table>
+        <thead><tr><th>Texte</th><th>Fond</th><th>Usage</th><th>Niveau</th></tr></thead>
+        <tbody>
+          <tr><td>#26291E</td><td>#FFFAE2</td><td>Corps et titres</td><td>AAA (14,12:1)</td></tr>
+          <tr><td>#5C614D</td><td>#FFFAE2</td><td>Texte secondaire</td><td>AA (6,12:1)</td></tr>
+          <tr><td>#FFFAE2</td><td>#26291E</td><td>Bouton principal, pied de page</td><td>AAA</td></tr>
+          <tr><td>#26291E</td><td>#E6E18F</td><td>Bouton d’accent</td><td>AAA</td></tr>
+          <tr><td>#26291E</td><td>#92977E</td><td>Survol du bouton principal</td><td>AA (4,90:1)</td></tr>
+          <tr><td>#FFFAE2</td><td>#92977E</td><td>Non utilisé pour du texte</td><td>Non conforme (2,88:1)</td></tr>
+        </tbody>
+      </table>
+      <p>Dans le brand book, chaque planche colorée choisit le blanc ou l’encre <code>#14160F</code> selon le fond. Si le couple d’origine est sous 4,5:1, une teinte de remplacement est proposée.</p>
+    </main>
+  </div>
+</body>
+</html>

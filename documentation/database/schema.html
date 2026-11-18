@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schéma — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a></header>
+    <main id="contenu">
+      <h1>Schéma PostgreSQL</h1>
+      <p class="meta">Prisma 5 · identifiants UUID · horodatage <code>timestamptz</code> · le client n’est pas encore appelé par les pages.</p>
+      <table>
+        <thead><tr><th>Modèle</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td>User</td><td>Compte. Suppression logique via <code>deletedAt</code>.</td></tr>
+          <tr><td>Brand</td><td>Nom, baseline, secteur, valeurs, langue.</td></tr>
+          <tr><td>LogoAsset</td><td>Variante, URL de stockage, dimensions, origine importée ou générée.</td></tr>
+          <tr><td>ColorToken</td><td>Nom, rôle, HEX, ordre.</td></tr>
+          <tr><td>FontAsset</td><td>Famille, rôle, graisses, WOFF2, droits confirmés.</td></tr>
+          <tr><td>TypeScale</td><td>Échelle typographique (JSON).</td></tr>
+          <tr><td>Guideline</td><td>Modèle, format, sections, textes, version, URL du PDF, statut.</td></tr>
+          <tr><td>Subscription</td><td>Offre gratuite ou payante, identifiants Stripe.</td></tr>
+        </tbody>
+      </table>
+      <p>Index sur <code>userId</code>, <code>brandId</code> et les statuts. Les fichiers ne sont pas stockés en base.</p>
+    </main>
+  </div>
+</body>
+</html>

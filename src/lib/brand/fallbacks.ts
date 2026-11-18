@@ -1,0 +1,95 @@
+import type { BrandColor, StandardColorRole } from '@/lib/brand/types'
+
+export const FALLBACK_COLORS: Record<StandardColorRole, BrandColor> = {
+  primary: {
+    id: 'fallback-primary',
+    name: 'Encre de repli',
+    role: 'primary',
+    hex: '#1F2933',
+    usage: 'Couleur de repli appliquée faute de primaire.',
+  },
+  secondary: {
+    id: 'fallback-secondary',
+    name: 'Secondaire de repli',
+    role: 'secondary',
+    hex: '#52606D',
+    usage: 'Couleur de repli.',
+  },
+  accent: {
+    id: 'fallback-accent',
+    name: 'Accent de repli',
+    role: 'accent',
+    hex: '#9AA5B1',
+    usage: 'Couleur de repli.',
+  },
+  background: {
+    id: 'fallback-background',
+    name: 'Fond de repli',
+    role: 'background',
+    hex: '#F7F6F3',
+    usage: 'Fond de page de repli.',
+  },
+  surface: {
+    id: 'fallback-surface',
+    name: 'Surface de repli',
+    role: 'surface',
+    hex: '#FFFFFF',
+    usage: 'Surface de carte de repli.',
+  },
+  text: {
+    id: 'fallback-text',
+    name: 'Texte de repli',
+    role: 'text',
+    hex: '#1F2933',
+    usage: 'Texte principal de repli.',
+  },
+  textSecondary: {
+    id: 'fallback-text-secondary',
+    name: 'Texte secondaire de repli',
+    role: 'textSecondary',
+    hex: '#52606D',
+    usage: 'Texte secondaire de repli.',
+  },
+  border: {
+    id: 'fallback-border',
+    name: 'Filet de repli',
+    role: 'border',
+    hex: '#E4E7EB',
+    usage: 'Bordure de repli.',
+  },
+  success: {
+    id: 'fallback-success',
+    name: 'Succès de repli',
+    role: 'success',
+    hex: '#0F6E56',
+    usage: 'État de succès de repli.',
+  },
+  error: {
+    id: 'fallback-error',
+    name: 'Erreur de repli',
+    role: 'error',
+    hex: '#9B1C1C',
+    usage: 'État d’erreur de repli.',
+  },
+  warning: {
+    id: 'fallback-warning',
+    name: 'Avertissement de repli',
+    role: 'warning',
+    hex: '#8A5A00',
+    usage: 'État d’avertissement de repli.',
+  },
+}
+
+export const ROLE_VARIABLE: Record<StandardColorRole, string> = {
+  primary: '--brand-primary',
+  secondary: '--brand-secondary',
+  accent: '--brand-accent',
+  background: '--brand-background',
+  surface: '--brand-surface',
+  text: '--brand-text',
+  textSecondary: '--brand-text-secondary',
+  border: '--brand-border',
+  success: '--brand-success',
+  error: '--brand-error',
+  warning: '--brand-warning',
+}

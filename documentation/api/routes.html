@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Routes — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a> · <a href="overview.html">Vue d’ensemble</a></header>
+    <main id="contenu">
+      <h1>Routes</h1>
+      <table>
+        <thead><tr><th>Méthode</th><th>Chemin</th><th>Auth</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>POST</td>
+            <td><code>/api/chat</code></td>
+            <td>Publique</td>
+            <td>JSON : <code>messages</code> (1 à 30 messages, rôle <code>user</code> ou <code>assistant</code>, 4 000 caractères). Le dernier message vient de l’utilisateur. Réponse : <code>message</code>, et <code>documents</code> seulement si la rédaction des trois pièces est demandée. 422 si le corps est invalide. 429 au-delà de 20 messages par minute.</td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td><code>/api/charte/pdf</code></td>
+            <td>Publique (démo)</td>
+            <td>Ancien export de charte, conservé dans le dépôt, hors parcours produit. Query <code>template</code> et <code>format</code>. 429 au-delà de 5 appels par minute.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Pages</h2>
+      <ul>
+        <li><code>/</code> — discussion</li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moteur PDF — Documentation Velyon</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="wrap">
+    <header class="top"><a href="../index.html">Documentation</a></header>
+    <main id="contenu">
+      <h1>Moteur de charte</h1>
+      <p class="meta"><span class="badge">v0.1.0</span> · 18 novembre 2026 · Stable pour la démonstration</p>
+      <h2>Description</h2>
+      <p>Le moteur compose un brand book A4 à partir d’une marque. Aucune couleur ni police client n’est écrite dans la feuille de style : elles arrivent en variables CSS. Trois modèles (Classique, Éditorial, Minimal) et deux formats (paysage, portrait) changent la mise en page, pas les données.</p>
+      <h2>Sections</h2>
+      <p>Couverture, sommaire, identité, logotype, zone de protection, huit usages interdits, palette, dégradés et nuances, accessibilité, combinaisons, typographie, échelle, grille, icônes, composants, documents types, jetons, check-list.</p>
+      <h2>Fichiers</h2>
+      <table>
+        <thead><tr><th>Fichier</th><th>Rôle</th></tr></thead>
+        <tbody>
+          <tr><td><code>src/lib/brand/resolve.ts</code></td><td>Validation HEX, replis, variables.</td></tr>
+          <tr><td><code>src/lib/brand/demo.ts</code></td><td>Marque Velyon de démonstration.</td></tr>
+          <tr><td><code>src/components/brand-book/brand-book.tsx</code></td><td>Assemblage des planches.</td></tr>
+          <tr><td><code>src/components/brand-book/sections.tsx</code></td><td>Gabarits.</td></tr>
+          <tr><td><code>src/components/brand-book/book.css</code></td><td>Mise en page imprimable.</td></tr>
+        </tbody>
+      </table>
+      <h2>Sécurité</h2>
+      <ul>
+        <li>Les noms de police sont filtrés avant d’entrer dans le CSS.</li>
+        <li>Le HEX illisible est rejeté.</li>
+        <li>Playwright n’ouvre que l’aperçu de cette application.</li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>
